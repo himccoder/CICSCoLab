@@ -7,6 +7,7 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [lastFetch, setLastFetch] = useState(null)
+  const [showBanner, setShowBanner] = useState(true)
 
   // Public CSV endpoint - no API key needed!
   const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT0pHDCYRN4LrKUqKHicgT_oAWaWQpLgK7cybJMb4dl8gMYWQHS44mJCGFF-jjFHPJ9qgLQvzjqkgjz/pub?output=csv"
@@ -72,9 +73,29 @@ function App() {
 
   return (
     <div className="app">
+      {showBanner && (
+        <div className="top-banner">
+          <span>Currently Accepting Project Applications for Spring 26.</span>
+          <a
+            href="https://forms.gle/4uEEf1T3A3xGRqzo6"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="banner-link"
+          >
+            Apply now →
+          </a>
+          <button
+            className="close-btn"
+            aria-label="Dismiss banner"
+            onClick={() => setShowBanner(false)}
+          >
+            ×
+          </button>
+        </div>
+      )}
       <header className="header">
         <div className="header-content">
-          <h1>CICS CoLab Project Board</h1>
+          <h1>CICS BuildBoard</h1>
           <p className="subtitle">Collaborate. Create. Code.</p>
         </div>
         <nav className="nav-links">
@@ -180,7 +201,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <p>© 2025 CICS CoLab | Building the Future Together</p>
+        <p>© 2025 CICS BuildBoard | Collaborate. Create. Code.</p>
       </footer>
     </div>
   )
